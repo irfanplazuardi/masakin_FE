@@ -1,6 +1,8 @@
 import React from 'react';
 
 interface FormInputProps {
+  id: string;
+  name: string;
   label: string;
   type: string;
   placeholder: string;
@@ -10,6 +12,8 @@ interface FormInputProps {
 }
 
 const FormInput = ({
+  id,
+  name,
   label,
   type,
   placeholder,
@@ -23,10 +27,12 @@ const FormInput = ({
         <label>{label}</label>
         <input
           className="w-[280px] h-[55px] border-[1.5px] rounded-[10px] p-3 border-[#D9D9D9]"
+          id={id}
           type={type}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          name={name}
         />
       </div>
     </div>
