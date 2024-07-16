@@ -44,6 +44,8 @@ const LoginForm = () => {
       <form onSubmit={handleLogin}>
         <div className="flex flex-col gap-6 items-center mt-[50px]">
           <FormInput
+            id="email"
+            name="email"
             label="Email"
             type="email"
             placeholder="Email"
@@ -54,6 +56,8 @@ const LoginForm = () => {
           />
           <div className="flex flex-col gap-4">
             <FormInput
+              id="password"
+              name="password"
               label="Password"
               type="password"
               placeholder="Password"
