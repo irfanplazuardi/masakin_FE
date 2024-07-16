@@ -28,7 +28,7 @@ const LoginForm = () => {
       const accessToken = response.data.access_token;
       if (accessToken) {
         localStorage.setItem('access_token', accessToken);
-        router.push('/Home');
+        router.push('/home');
       } else {
         console.error('Access token tidak ditemukan dalam respons');
         setErrorMessage('Login failed: Access token not found');
