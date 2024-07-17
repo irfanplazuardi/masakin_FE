@@ -11,7 +11,7 @@ const ResepPopular = () => {
     <div className="mb-20">
       <h1 className="text-2xl font-bold p-5">Resep Populer</h1>
       <Carousel className="w-full max-w-sm px-7">
-        <CarouselContent className="-ml-2 flex gap-24 ">
+        <CarouselContent className="-ml-2 flex gap-28">
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index} className="w-full m basis-1/3 sm:basis-1/3 md:basis-1/2 lg:basis-1/3">
               <div className="p-1">
