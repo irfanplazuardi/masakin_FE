@@ -1,19 +1,36 @@
 import FormButton from '@/components/FormButton';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useRouter } from 'next/router'; // Perbaiki import ini
+import { useEffect, useState } from 'react';
 
 const SplashPage = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true); // State untuk loading
+
   useEffect(() => {
     // Menambahkan kelas Tailwind CSS ke body
     document.body.classList.add('flex', 'justify-center', 'bg-black');
 
-    // Membersihkan kelas ketika komponen di-unmount
+    // Simulasikan proses loading selama 1 detik
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Setelah 1 detik, set loading menjadi false
+    }, 1000);
+
+    // Membersihkan kelas dan timer ketika komponen di-unmount
     return () => {
+      clearTimeout(timer);
       document.body.classList.remove('flex', 'justify-center', 'bg-black');
     };
   }, []);
+
+  if (isLoading) {
+    // Tampilkan loading page
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-white">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <main>
