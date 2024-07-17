@@ -40,21 +40,21 @@ const Recipe = () => {
       {/* Konten Bahan-bahan */}
       {showIngredients && (
         <div className="bg-white py-4 px-6">
-          {/* Konten bahan-bahan */}
+          {/* Konten bahan-bahan masakan */}
         </div>
       )}
 
       {/* Konten Alat-alat */}
       {showTools && (
         <div className="bg-white py-4 px-6">
-          {/* Konten alat-alat */}
+          {/* Konten alat-alat memasak */}
         </div>
       )}
 
       {/* Konten Cara Masak */}
       {showSteps && (
         <div className="bg-white py-4 px-6">
-          {/* Konten langkah-langkah memasak */}
+          {/* Konten langkah-langkah untuk memasak */}
         </div>
       )}
     </div>
