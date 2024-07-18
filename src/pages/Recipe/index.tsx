@@ -1,6 +1,17 @@
 import { RecipeHeader, RecipeReview, RecipeDescription, RecipeButtonvideo, RecipeDetail } from '@/components';
 import { useState } from 'react';
 import RecipeTabs from '@/components/RecipeTabs';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+
+const fetchRecipe = async () => {
+  const { data } = await axios.get('/api/users')
+  return data
+}
+
+export const useUsers = () => {// Queries
+  return useQuery({ queryKey: ['Recipe'], queryFn: fetchRecipe})
+}
 
 const Recipe = () => {
   const recipeTitle = 'Bulgogi';
