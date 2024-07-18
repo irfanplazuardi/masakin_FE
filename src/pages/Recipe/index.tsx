@@ -1,5 +1,6 @@
 import { RecipeHeader, RecipeReview, RecipeDescription, RecipeButtonvideo, RecipeDetail } from '@/components';
 import { useState } from 'react';
+import RecipeTabs from '@/components/RecipeTabs';
 
 const Recipe = () => {
   const recipeTitle = 'Bulgogi';
@@ -54,9 +55,10 @@ const Recipe = () => {
       {/* Konten Cara Masak */}
       {showSteps && (
         <div className="bg-white py-4 px-6">
-          {/* Konten langkah-langkah untuk memasak */}
+          {/* Konten langkah-langkah untuk memasak*/}
         </div>
       )}
+      <RecipeTabs />
     </div>
   );
 };
