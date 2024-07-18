@@ -3,7 +3,7 @@ export interface RecipeTypes {
     user_id:         string;
     title:           string;
     image_url:       string;
-    video_url:       null;
+    video_url:       string;
     description:     string;
     difficulty:      number;
     time_estimation: number;

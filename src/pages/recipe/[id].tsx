@@ -1,5 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { RecipeHeader, RecipeReview, RecipeDescription, RecipeButtonvideo, RecipeDetail } from "@/components";
+import {
+  RecipeHeader,
+  RecipeReview,
+  RecipeDescription,
+  RecipeButtonvideo,
+  RecipeDetail,
+} from "@/components";
 import { useState } from "react";
 import axios from "axios";
 import { RecipeTypes } from "@/Types/Recipetypes";
@@ -63,10 +69,17 @@ const Recipe = ({ recipe }: RecipeProps) => {
   }
   return (
     <div>
-      <RecipeHeader title={recipe?.title || ""} imageUrl={recipe?.image_url || ""} />
-      <RecipeReview rating={Number(recipe.recipe_rating)} cookingTime={recipe.cookingTime} difficultyLevel={recipe.difficultyLevel} maxDifficultyLevel={recipe.maxDifficultyLevel} />
+      <RecipeHeader
+        title={recipe?.title || ""}
+        imageUrl={recipe?.image_url || ""}
+      />
+      <RecipeReview
+        rating={Number(recipe.recipe_rating)}
+        cookingTime={recipe.time_estimation}
+        difficultyLevel={recipe.difficulty}
+      />
       <RecipeDescription description={recipe.description} />
-      <RecipeButtonvideo videoUrl={recipe.videoUrl} />
+      <RecipeButtonvideo videoUrl={recipe.video_url} />
 
       {/* Komponen Memasak (Detailrecipe) */}
       <RecipeDetail
@@ -79,13 +92,25 @@ const Recipe = ({ recipe }: RecipeProps) => {
       />
 
       {/* Konten Bahan-bahan */}
-      {showIngredients && <div className="bg-white py-4 px-6">{/* Konten bahan-bahan masakan */}</div>}
+      {showIngredients && (
+        <div className="bg-white py-4 px-6">
+          {/* Konten bahan-bahan masakan */}
+        </div>
+      )}
 
       {/* Konten Alat-alat */}
-      {showTools && <div className="bg-white py-4 px-6">{/* Konten alat-alat memasak */}</div>}
+      {showTools && (
+        <div className="bg-white py-4 px-6">
+          {/* Konten alat-alat memasak */}
+        </div>
+      )}
 
       {/* Konten Cara Masak */}
-      {showSteps && <div className="bg-white py-4 px-6">{/* Konten langkah-langkah untuk memasak */}</div>}
+      {showSteps && (
+        <div className="bg-white py-4 px-6">
+          {/* Konten langkah-langkah untuk memasak */}
+        </div>
+      )}
     </div>
   );
 };
