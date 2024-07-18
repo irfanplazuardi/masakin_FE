@@ -36,7 +36,7 @@ const Recipe = () => {
     <div>
       <RecipeHeader title={data?.title ||''} imageUrl={data?.image_url ||''} />
       <RecipeReview
-        rating={rating}
+        rating={Number(data?.recipe_rating) || rating}
         cookingTime={cookingTime}
         difficultyLevel={difficultyLevel}
         maxDifficultyLevel={maxDifficultyLevel}
