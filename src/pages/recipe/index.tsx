@@ -74,7 +74,7 @@ const Recipe = () => {
           {/* Konten langkah-langkah untuk memasak*/}
         </div>
       )}
-      <RecipeTabs />
+      {/* <RecipeTabs /> */}
     </div>
   );
 };
