@@ -20,17 +20,17 @@ export default function RecipeTabs() {
   return (
     <Tabs defaultValue="account" className="w-[400px] mx-auto">
       <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
-        <TabsTrigger value="Cara_masak">Cara masak</TabsTrigger>
+        <TabsTrigger value="bahan">Account</TabsTrigger>
+        <TabsTrigger value="alat">Password</TabsTrigger>
+        <TabsTrigger value="cara_masak">Cara masak</TabsTrigger>
       </TabsList>
-      <TabsContent value="Cara_masak">Cara masak</TabsContent>
+      <TabsContent value="cara_masak"></TabsContent>
       <TabsContent value="account">
-        <Card>
+        {/* <Card>
           <CardHeader>
             <CardTitle>Account</CardTitle>
             <CardDescription>
-              Make changes to your account here. Click save when you're done.
+              {Make changes to your account here. Click save when you're done.}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
@@ -46,14 +46,14 @@ export default function RecipeTabs() {
           <CardFooter>
             <Button>Save changes</Button>
           </CardFooter>
-        </Card>
+        </Card> */}
       </TabsContent>
       <TabsContent value="password">
-        <Card>
+        {/* <Card>
           <CardHeader>
             <CardTitle>Password</CardTitle>
             <CardDescription>
-              Change your password here. After saving, you'll be logged out.
+              {Change your password here. After saving, you'll be logged out.}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
@@ -69,7 +69,7 @@ export default function RecipeTabs() {
           <CardFooter>
             <Button>Save password</Button>
           </CardFooter>
-        </Card>
+        </Card> */}
       </TabsContent>
     </Tabs>
   )

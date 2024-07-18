@@ -3,17 +3,22 @@ import { useState } from 'react';
 import RecipeTabs from '@/components/RecipeTabs';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { RecipeTypes } from '@/Types/Recipetypes';
+
+const base_url='https://masakin-be.adaptable.app/'
 
 const fetchRecipe = async () => {
-  const { data } = await axios.get('/api/users')
+  const { data } = await axios.get(base_url+'/recipes/2',{
+    headers:{
+      Authorization:'Bearer '+ 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNjNlZGVjOC0xNmFjLTQ1M2EtYjZkNy1hYjhlODc1NDQ5YTgiLCJ1c2VybmFtZSI6IlNhcnJhUmV2b1UiLCJpYXQiOjE3MjEyNzIzNjUsImV4cCI6MTcyMTg3NzE2NX0.UxAqXhBj-xYBPA_F574QH4n-FYkmRx_RkaEfrNSJtGU'
+    }
+  })
   return data
 }
 
-export const useUsers = () => {// Queries
-  return useQuery({ queryKey: ['Recipe'], queryFn: fetchRecipe})
-}
-
 const Recipe = () => {
+  const {data}=useQuery<RecipeTypes>({ queryKey: ['Recipe'], queryFn: fetchRecipe})
+  console.log(data)
   const recipeTitle = 'Bulgogi';
   const recipeImageUrl = '/assets/Bulgogi.jpg';
   const rating = 5;
@@ -29,7 +34,7 @@ const Recipe = () => {
 
   return (
     <div>
-      <RecipeHeader title={recipeTitle} imageUrl={recipeImageUrl} />
+      <RecipeHeader title={data?.title ||''} imageUrl={data?.image_url ||''} />
       <RecipeReview
         rating={rating}
         cookingTime={cookingTime}
