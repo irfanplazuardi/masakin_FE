@@ -27,7 +27,7 @@ const RecipeDetailFirstRow: React.FC<RecipeDetailFirstRowProps> = ({ onIngredien
   return (
     <div className="flex items-center justify-between w-full">
       <button
-        className={`py-2 px-4 rounded-lg flex justify-center items-center mr-2${activeButton === 'ingredients' ? 'bg-green-600 text-white' : 'text-green-600'}`}
+        className={`py-2 px-4 rounded-lg flex justify-center items-center mr-auto ${activeButton === 'ingredients' ? 'bg-green-600 text-white' : 'text-green-600'}`}
         onClick={handleIngredientsClick}
         style={{ width: '104px', height: '33px', borderRadius: '10px', backgroundColor: activeButton === 'ingredients' ? '#7E9F10' : 'transparent', color: activeButton !== 'ingredients' ? '#7E9F10' : '#FFFFFF' }}
       >
@@ -45,7 +45,7 @@ const RecipeDetailFirstRow: React.FC<RecipeDetailFirstRowProps> = ({ onIngredien
         </span>
       </button>
       <button
-        className={`py-2 px-4 rounded-lg flex justify-center items-center ${activeButton === 'steps' ? 'bg-green-600 text-white' : 'text-green-600'}`}
+        className={`py-2 px-4 rounded-lg flex justify-center items-center ml-auto ${activeButton === 'steps' ? 'bg-green-600 text-white' : 'text-green-600'}`}
         onClick={handleStepsClick}
         style={{ width: '105px', height: '33px', borderRadius: '10px', backgroundColor: activeButton === 'steps' ? '#7E9F10' : 'transparent', color: activeButton !== 'steps' ? '#7E9F10' : '#FFFFFF' }}
       >

@@ -1,4 +1,4 @@
-import { RecipeHeader, RecipeReview, RecipeDescription, RecipeButtonvideo, RecipeDetail } from '@/components';
+import { RecipeHeader, RecipeReview, RecipeDescription, RecipeButtonvideo, RecipeDetail, Navbar } from '@/components';
 import { useState } from 'react';
 import RecipeTabs from '@/components/RecipeTabs';
 import { useQuery } from '@tanstack/react-query';
@@ -75,6 +75,9 @@ const Recipe = () => {
         </div>
       )}
       {/* <RecipeTabs /> */}
+
+      <Navbar/>
+
     </div>
   );
 };

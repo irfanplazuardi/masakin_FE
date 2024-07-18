@@ -14,7 +14,7 @@ const RecipeArrowleft: React.FC = () => {
         alt="Arrow Left"
         width={20}
         height={20}
-        onClick={() => router.push("/Home")}
+        onClick={() => router.push("/home")}
       />
     </div>
   );
