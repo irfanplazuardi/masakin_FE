@@ -1,5 +1,5 @@
-import Image from "next/image";
-import { VscArrowLeft } from "react-icons/vsc";
+import Image from 'next/image';
+import { RecipeArrowleft } from '@/components';
 
 interface RecipeHeaderProps {
   title: string;
@@ -10,7 +10,7 @@ const RecipeHeader: React.FC<RecipeHeaderProps> = ({ title, imageUrl }) => {
   return (
     <div className="flex flex-col items-center mt-8">
       <div className="absolute left-4 top-4">
-        <VscArrowLeft size={20} color="#181818" />
+        <RecipeArrowleft />
       </div>
       <h1
         className="font-inter font-normal text-center"
