@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Formik, Field, ErrorMessage } from 'formik';
@@ -7,6 +7,33 @@ import FormButton from '../FormButton';
 import FormInput from '../FormInput';
 
 const RegisterForm = () => {
+    // state for loading
+    const [isLoading, setIsLoading] = useState(true);
+
+    // simulate loading time
+    useEffect(() => {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+    }, []);
+
+    // if loading is true, return skeleton component
+    if (isLoading) {
+      return (
+        <div className="flex flex-col gap-6 items-center mt-[50px] animate-pulse">
+          <div className="w-64 h-10 bg-gray-200 rounded mb-4"></div>
+          <div className="w-64 h-10 bg-gray-200 rounded mb-4"></div>
+          <div className="w-40 h-6 bg-gray-200 rounded mb-4"></div>
+          <div className="w-24 h-10 bg-gray-200 rounded mb-4"></div>
+          <div className="flex items-center w-full gap-4">
+            <hr className="flex-grow border-t border-gray-300" />
+            <div className="w-24 h-6 bg-gray-200 rounded"></div>
+            <hr className="flex-grow border-t border-gray-300" />
+          </div>
+        </div>
+      );
+    }
+        
     // router for navigation
     const router = useRouter();
 
