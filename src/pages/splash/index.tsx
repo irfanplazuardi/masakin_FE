@@ -33,9 +33,9 @@ const SplashPage = () => {
   }
 
   return (
-    <main>
-      <div className="relative h-screen flex flex-col items-center justify-centergap-2">
-        <div className="absolute inset-0 bg-[url('/assets/Splash-bg.png')] bg-no-repeat bg-cover">
+    <main className="w-[425px] mx-auto p-4">
+      <div className="h-screen flex flex-col items-center justify-centergap-2">
+        <div className="absolute inset-0 bg-[url('/assets/Splash-bg.png')] bg-no-repeat bg-cover w-[425px] mx-auto p-4">
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
         </div>
         <div className="flex justify-center items-center pt-[98px] relative z-10">
