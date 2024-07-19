@@ -50,7 +50,7 @@ const CardRecipeDetailSteps: React.FC<CardRecipeDetailStepsProps> = ({
         height={74}
         style={{
           borderRadius: "10px 0px 0px 0px",
-          marginTop: "8px", // Adjust margin as needed
+          marginTop: "8px",
           backgroundColor: "#FFFFFF", // Background color white for the image
         }}
       />
