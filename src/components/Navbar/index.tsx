@@ -9,20 +9,20 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 z-10">
-      <div className="border-t my-2 border-gray-200 dark:border-gray-700"></div>
-      <div className="flex justify-between px-14 items-center pb-5">
-        <button onClick={() => handleNavigation("/")}>
-          <img src="./assets/icons/home.svg" alt="home" />
+    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-900 z-10 w-[425px]">
+      <div className="border-t border-gray-200 dark:border-gray-700"></div>
+      <div className="flex justify-between px-4 items-center py-2">
+        <button onClick={() => handleNavigation("/home")}>
+          <img src="./assets/icons/home.svg" alt="home" className="w-6 h-6" />
         </button>
-        <button onClick={() => handleNavigation("/")}>
-          <img src="./assets/icons/bookmark.svg" alt="bookmark" />
+        <button onClick={() => handleNavigation("/bookmark")}>
+          <img src="./assets/icons/bookmark.svg" alt="bookmark" className="w-6 h-6" />
         </button>
-        <button onClick={() => handleNavigation("/")}>
-          <img src="./assets/icons/recipe.svg" alt="recipe" />
+        <button onClick={() => handleNavigation("/recipe")}>
+          <img src="./assets/icons/recipe.svg" alt="recipe" className="w-6 h-6" />
         </button>
-        <button onClick={() => handleNavigation("/")}>
-          <img src="./assets/icons/profile.svg" alt="profile" />
+        <button onClick={() => handleNavigation("/profile")}>
+          <img src="./assets/icons/profile.svg" alt="profile" className="w-6 h-6" />
         </button>
       </div>
     </div>
