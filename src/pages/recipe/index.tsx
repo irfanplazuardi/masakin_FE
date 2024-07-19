@@ -63,14 +63,7 @@ const Recipe = () => {
       />
 
       {/* Komponen Memasak (Detailrecipe) */}
-      <RecipeDetail
-        showIngredients={showIngredients}
-        showTools={showTools}
-        showSteps={showSteps}
-        onIngredientsClick={() => setShowIngredients(!showIngredients)}
-        onToolsClick={() => setShowTools(!showTools)}
-        onStepsClick={() => setShowSteps(!showSteps)}
-      />
+      <RecipeDetail />
 
       {/* Konten Bahan-bahan */}
       {showIngredients && (
@@ -92,7 +85,6 @@ const Recipe = () => {
           {/* Konten langkah-langkah untuk memasak*/}
         </div>
       )}
-      {/* <RecipeTabs /> */}
 
       <Navbar />
     </div>

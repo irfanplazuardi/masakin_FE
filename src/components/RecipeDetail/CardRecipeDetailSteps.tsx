@@ -25,7 +25,6 @@ const CardRecipeDetailSteps: React.FC<CardRecipeDetailStepsProps> = ({
           backgroundColor: "#FFFFFF", // Background color white for text container
           padding: "8px",
           borderRadius: "10px",
-          boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Optional: shadow for better visibility
         }}
       >
         <span
@@ -51,7 +50,7 @@ const CardRecipeDetailSteps: React.FC<CardRecipeDetailStepsProps> = ({
         height={74}
         style={{
           borderRadius: "10px 0px 0px 0px",
-          marginTop: "8px", // Adjust margin as needed
+          marginTop: "8px",
           backgroundColor: "#FFFFFF", // Background color white for the image
         }}
       />
