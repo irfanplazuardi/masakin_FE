@@ -9,7 +9,7 @@ const SplashPage = () => {
 
   useEffect(() => {
     // Menambahkan kelas Tailwind CSS ke body
-    document.body.classList.add('flex', 'justify-center');
+    document.body.classList.add('flex', 'justify-center', 'bg-black');
 
     // Simulasikan proses loading selama 1 detik
     const timer = setTimeout(() => {
@@ -19,7 +19,7 @@ const SplashPage = () => {
     // Membersihkan kelas dan timer ketika komponen di-unmount
     return () => {
       clearTimeout(timer);
-      document.body.classList.remove('flex', 'justify-center');
+      document.body.classList.remove('flex', 'justify-center', 'bg-black');
     };
   }, []);
 
