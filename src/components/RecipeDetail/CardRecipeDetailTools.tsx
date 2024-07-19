@@ -1,13 +1,12 @@
-import React from "react";
-
-interface CardRecipeDetailIngredientsProps {
+interface CardRecipeDetailToolsProps {
   leftText: string;
   rightText: string;
 }
 
-const CardRecipeDetailIngredients: React.FC<
-  CardRecipeDetailIngredientsProps
-> = ({ leftText, rightText }) => {
+const CardRecipeDetailIngredients: React.FC<CardRecipeDetailToolsProps> = ({
+  leftText,
+  rightText,
+}) => {
   return (
     <div
       className="flex items-center justify-between p-2"
