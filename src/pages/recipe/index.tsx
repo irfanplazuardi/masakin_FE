@@ -4,6 +4,7 @@ import {
   RecipeDescription,
   RecipeButtonvideo,
   RecipeDetail,
+  Navbar,
 } from "@/components";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -92,6 +93,8 @@ const Recipe = () => {
         </div>
       )}
       {/* <RecipeTabs /> */}
+
+      <Navbar />
     </div>
   );
 };
