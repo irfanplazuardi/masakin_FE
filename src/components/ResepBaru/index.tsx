@@ -1,26 +1,91 @@
+"use client";
+
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { RecipeOverviewTypes } from "@/Types/RecipeOverviewTypes";
+import { useRouter } from "next/router";
 
 const ResepBaru = () => {
-  const [value, setValue] = React.useState<number | null>(3);
+  const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [value, setValue] = useState<number | null>(3);
+  const [recipeData, setRecipeData] = useState<RecipeOverviewTypes[]>([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    const bearerToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNjNlZGVjOC0xNmFjLTQ1M2EtYjZkNy1hYjhlODc1NDQ5YTgiLCJ1c2VybmFtZSI6IlNhcnJhUmV2b1UiLCJpYXQiOjE3MjEyNzIzNjUsImV4cCI6MTcyMTg3NzE2NX0.UxAqXhBj-xYBPA_F574QH4n-FYkmRx_RkaEfrNSJtGU";
+
+    fetch("https://masakin-be.adaptable.app/recipes/recent", {
+      headers: {
+        Authorization: `Bearer ${bearerToken}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+        setRecipeData(data);
+        console.log(data);
+      });
+  }, []);
+
+  function handleClick(id: number) {
+    router.push(`/recipe/${id}`);
+  }
+
+  if (isLoading) return <p>Loading...</p>;
+  if (!data) return <p>No profile data</p>;
+
   return (
     <div>
       <h1 className="text-2xl font-bold p-5">Resep Baru</h1>
       <Carousel className="w-full max-w-sm px-7">
         <CarouselContent className="-ml-2 flex gap-28 ">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index} className="w-full m basis-1/3 sm:basis-1/3 md:basis-1/2 lg:basis-1/3">
+          {recipeData.map((recipe) => (
+            <CarouselItem
+              onClick={() => handleClick(recipe.id)}
+              key={recipe.id}
+              className="w-full m basis-1/3 sm:basis-1/3 md:basis-1/2 lg:basis-1/3"
+            >
               <div className="p-1">
                 <Card className="w-[50vw] bg-slate-200">
                   <CardContent className="flex flex-col items-center justify-center p-6 gap-2">
-                    <img src="./assets/soto.jpg" alt="soto" />
-                    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                      <Typography component="legend" align="center" sx={{ width: "100%" }}>
-                        Soto Ayam Lamongan
+                    <div className="h-32 w-32">
+                      <Image
+                        className="object-cover w-full h-full"
+                        src={recipe.image_url}
+                        alt="image"
+                        width={80}
+                        height={80}
+                      />
+                    </div>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <Typography
+                        className="truncate"
+                        component="legend"
+                        align="center"
+                        sx={{ width: "100%" }}
+                      >
+                        {recipe.title}
                       </Typography>
                       <Box sx={{ mt: 2 }}>
                         <Rating
