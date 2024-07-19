@@ -82,14 +82,7 @@ const Recipe = ({ recipe }: RecipeProps) => {
       <RecipeButtonvideo videoUrl={recipe.video_url} />
 
       {/* Komponen Memasak (Detailrecipe) */}
-      <RecipeDetail
-        showIngredients={showIngredients}
-        showTools={showTools}
-        showSteps={showSteps}
-        onIngredientsClick={() => setShowIngredients(!showIngredients)}
-        onToolsClick={() => setShowTools(!showTools)}
-        onStepsClick={() => setShowSteps(!showSteps)}
-      />
+      <RecipeDetail />
 
       {/* Konten Bahan-bahan */}
       {showIngredients && (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RecipeDetailFirstRow from "./RecipeDetailFirstRow";
-import RecipeDetailSecondRow from "./RecipeDetailSecondRow";
+import RecipeDetailSecondRowIngredients from "./RecipeDetailSecondRowIngredients";
 import CardRecipeDetailIngredients from "./CardRecipeDetailIngredients";
 import CardRecipeDetailTools from "./CardRecipeDetailTools";
 import CardRecipeDetailSteps from "./CardRecipeDetailSteps";
@@ -37,7 +37,7 @@ const RecipeDetail: React.FC = () => {
         onToolsClick={handleToolsClick}
         onStepsClick={handleStepsClick}
       />
-      <RecipeDetailSecondRow />
+      <RecipeDetailSecondRowIngredients />
       {activeCard === "ingredients" && (
         <div className="space-y-2">
           <CardRecipeDetailIngredients
@@ -70,10 +70,6 @@ const RecipeDetail: React.FC = () => {
           <CardRecipeDetailSteps
             stepText="2. Cincang halus 8 siung bawang putih, Siapkan 60 ml Korean soy sauce, 30 ml minyak wijen panggang, 3 sdm brown sugar, tuang dan campur semua bahan ke dalam mangkuk untuk membuat marinasi. 
 "
-            imageUrl="/assets/step_2_bulgogi.png"
-          />
-          <CardRecipeDetailSteps
-            stepText="3."
             imageUrl="/assets/step_2_bulgogi.png"
           />
         </div>

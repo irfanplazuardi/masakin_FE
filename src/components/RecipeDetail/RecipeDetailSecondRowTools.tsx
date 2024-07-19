@@ -1,7 +1,6 @@
-import React from "react";
 import Image from "next/image";
 
-const RecipeDetailSecondRow: React.FC = () => {
+const RecipeDetailSecondRowTools: React.FC = () => {
   return (
     <div className="flex items-center justify-between w-full mt-2">
       <button
@@ -16,7 +15,7 @@ const RecipeDetailSecondRow: React.FC = () => {
             fontWeight: 600,
             lineHeight: "16.5px",
             textAlign: "center",
-            color: "#000000",
+            color: "#A9A9A9",
           }}
         >
           <Image
@@ -43,7 +42,7 @@ const RecipeDetailSecondRow: React.FC = () => {
             color: "#000000",
           }}
         >
-          Masakan
+          Alat-alat
         </span>
       </button>
       <button
@@ -57,14 +56,14 @@ const RecipeDetailSecondRow: React.FC = () => {
             fontWeight: 600,
             lineHeight: "16.5px",
             textAlign: "center",
-            color: "#000000",
+            color: "#A9A9A9",
           }}
         >
-          12 bahan
+          9 Alat
         </span>
       </button>
     </div>
   );
 };
 
-export default RecipeDetailSecondRow;
+export default RecipeDetailSecondRowTools;
