@@ -2,25 +2,25 @@ import React, { useState } from "react";
 import RecipeDetailFirstRow from "./RecipeDetailFirstRow";
 import RecipeDetailSecondRow from "./RecipeDetailSecondRow";
 import CardRecipeDetailIngredients from "./CardRecipeDetailIngredients";
+import CardRecipeDetailTools from "./CardRecipeDetailTools";
+import CardRecipeDetailSteps from "./CardRecipeDetailSteps";
 
-interface RecipeDetailProps {
-  showIngredients: boolean;
-  showTools: boolean;
-  showSteps: boolean;
-  onIngredientsClick: () => void;
-  onToolsClick: () => void;
-  onStepsClick: () => void;
-}
+const RecipeDetail: React.FC = () => {
+  const [activeCard, setActiveCard] = useState<
+    "ingredients" | "tools" | "steps" | null
+  >(null);
 
-const RecipeDetail: React.FC<RecipeDetailProps> = ({
-  showIngredients,
-  showTools,
-  showSteps,
-  onIngredientsClick,
-  onToolsClick,
-  onStepsClick,
-}) => {
-  const [showIngredientsDetail, setShowIngredientsDetail] = useState(true); // Set initial state to true
+  const handleIngredientsClick = () => {
+    setActiveCard("ingredients");
+  };
+
+  const handleToolsClick = () => {
+    setActiveCard("tools");
+  };
+
+  const handleStepsClick = () => {
+    setActiveCard("steps");
+  };
 
   return (
     <div
@@ -33,27 +33,51 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({
       }}
     >
       <RecipeDetailFirstRow
-        onIngredientsClick={onIngredientsClick}
-        onToolsClick={onToolsClick}
-        onStepsClick={onStepsClick}
+        onIngredientsClick={handleIngredientsClick}
+        onToolsClick={handleToolsClick}
+        onStepsClick={handleStepsClick}
       />
-      {showIngredientsDetail && <RecipeDetailSecondRow />}
-      <div className="space-y-2">
-        {" "}
-        {/* Add spacing between the buttons */}
-        <CardRecipeDetailIngredients
-          leftText="Bahan Utama 1"
-          rightText="100 gram"
-        />
-        <CardRecipeDetailIngredients
-          leftText="Bahan Utama 2"
-          rightText="200 gram"
-        />
-        <CardRecipeDetailIngredients
-          leftText="Bahan Utama 3"
-          rightText="200 gram"
-        />
-      </div>
+      <RecipeDetailSecondRow />
+      {activeCard === "ingredients" && (
+        <div className="space-y-2">
+          <CardRecipeDetailIngredients
+            leftText="Bahan Utama 1"
+            rightText="100 gram"
+          />
+          <CardRecipeDetailIngredients
+            leftText="Bahan Utama 2"
+            rightText="200 gram"
+          />
+          <CardRecipeDetailIngredients
+            leftText="Bahan Utama 3"
+            rightText="200 gram"
+          />
+        </div>
+      )}
+      {activeCard === "tools" && (
+        <div className="space-y-2">
+          <CardRecipeDetailTools leftText="Alat 1" rightText="1 pcs" />
+          <CardRecipeDetailTools leftText="Alat 2" rightText="2 pcs" />
+          <CardRecipeDetailTools leftText="Alat 3" rightText="3 pcs" />
+        </div>
+      )}
+      {activeCard === "steps" && (
+        <div className="space-y-2">
+          <CardRecipeDetailSteps
+            stepText="1. Kumpulkan semua bahan."
+            imageUrl="/assets/step_1_bulgogi.png"
+          />
+          <CardRecipeDetailSteps
+            stepText="2. Cincang halus 8 siung bawang putih, Siapkan 60 ml Korean soy sauce, 30 ml minyak wijen panggang, 3 sdm brown sugar, tuang dan campur semua bahan ke dalam mangkuk untuk membuat marinasi. 
+"
+            imageUrl="/assets/step_2_bulgogi.png"
+          />
+          <CardRecipeDetailSteps
+            stepText="3."
+            imageUrl="/assets/step_2_bulgogi.png"
+          />
+        </div>
+      )}
     </div>
   );
 };
