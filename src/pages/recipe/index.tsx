@@ -28,15 +28,15 @@ const Recipe = () => {
     queryKey: ["Recipe"],
     queryFn: fetchRecipe,
   });
-  console.log(data);
-  const recipeTitle = "Bulgogi";
-  const recipeImageUrl = "/assets/Bulgogi.jpg";
+
+  // const recipeTitle = "Bulgogi";
+  // const recipeImageUrl = "/assets/Bulgogi.jpg";
   const rating = 5;
-  const cookingTime = 50;
-  const difficultyLevel = 3;
-  const maxDifficultyLevel = 3;
-  const recipeDescription =
-    "Bulgogi adalah daging sapi panggang klasik khas Korea yang lezat, cocok dinikmati saat makan siang ataupun makan malam.\n Dengan langkah-langkah yang sederhana, Bulgogi sangat mudah untuk dibuat.\n Hidangkan Bulgogi bersama nasi dan kimchi untuk sensasi makan yang benar-benar autentik.";
+  // const cookingTime = 50;
+  // const difficultyLevel = 3;
+  // const maxDifficultyLevel = 3;
+  // const recipeDescription =
+  //   "Bulgogi adalah daging sapi panggang klasik khas Korea yang lezat, cocok dinikmati saat makan siang ataupun makan malam.\n Dengan langkah-langkah yang sederhana, Bulgogi sangat mudah untuk dibuat.\n Hidangkan Bulgogi bersama nasi dan kimchi untuk sensasi makan yang benar-benar autentik.";
 
   // State untuk menampilkan konten bahan, alat, dan cara masak
   const [showIngredients, setShowIngredients] = useState(false);
@@ -46,16 +46,20 @@ const Recipe = () => {
   return (
     <div>
       <RecipeHeader
-        title={data?.title || ""}
-        imageUrl={data?.image_url || ""}
+        title={data?.title || "No Recipe"}
+        imageUrl={data?.image_url || "/assets/default_image.jpg"}
       />
       <RecipeReview
         rating={Number(data?.recipe_rating) || rating}
-        cookingTime={cookingTime}
-        difficultyLevel={difficultyLevel}
+        cookingTime={data?.time_estimation || 0}
+        difficultyLevel={data?.difficulty || 0}
       />
-      <RecipeDescription description={recipeDescription} />
-      <RecipeButtonvideo videoUrl="https://www.youtube.com/watch?v=cmxaIPr_1kI" />
+      <RecipeDescription description={data?.description || "No Description"} />
+      <RecipeButtonvideo
+        videoUrl={
+          data?.video_url || "https://www.youtube.com/watch?v=cmxaIPr_1kI"
+        }
+      />
 
       {/* Komponen Memasak (Detailrecipe) */}
       <RecipeDetail
