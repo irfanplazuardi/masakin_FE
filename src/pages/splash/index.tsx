@@ -9,7 +9,7 @@ const SplashPage = () => {
 
   useEffect(() => {
     // Menambahkan kelas Tailwind CSS ke body
-    document.body.classList.add('flex', 'justify-center', 'bg-black');
+    document.body.classList.add('flex', 'justify-center');
 
     // Simulasikan proses loading selama 1 detik
     const timer = setTimeout(() => {
@@ -19,7 +19,7 @@ const SplashPage = () => {
     // Membersihkan kelas dan timer ketika komponen di-unmount
     return () => {
       clearTimeout(timer);
-      document.body.classList.remove('flex', 'justify-center', 'bg-black');
+      document.body.classList.remove('flex', 'justify-center');
     };
   }, []);
 
@@ -33,9 +33,9 @@ const SplashPage = () => {
   }
 
   return (
-    <main>
+    <main className="w-[425px] mx-auto p-4">
       <div className="h-screen flex flex-col items-center justify-centergap-2">
-        <div className="absolute inset-0 bg-[url('/assets/Splash-bg.png')] bg-no-repeat bg-cover">
+        <div className="absolute inset-0 bg-[url('/assets/Splash-bg.png')] bg-no-repeat bg-cover w-[425px] mx-auto p-4">
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
         </div>
         <div className="flex justify-center items-center pt-[98px] relative z-10">
