@@ -14,7 +14,6 @@ import { useRouter } from "next/router";
 const ResepBaru = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
-  const [value, setValue] = useState<number | null>(3);
   const [recipeData, setRecipeData] = useState<RecipeOverviewTypes[]>([]);
   const router = useRouter();
 
@@ -52,7 +51,7 @@ const ResepBaru = () => {
               <div className="p-1">
                 <Card className="w-[50vw] bg-slate-200">
                   <CardContent className="flex flex-col items-center justify-center p-6 gap-2">
-                    <div className="h-32 w-32">
+                    <div className="h-24 w-full">
                       <Image className="object-cover w-full h-full" src={recipe.image_url} alt="image" width={80} height={80} />
                     </div>
                     <Box
@@ -68,7 +67,7 @@ const ResepBaru = () => {
                       <Box sx={{ mt: 2 }}>
                         <Rating
                           name="read-only"
-                          value={value}
+                          value={parseInt(recipe.recipe_rating)}
                           readOnly
                           sx={{
                             "& .MuiRating-iconFilled": {
@@ -78,6 +77,13 @@ const ResepBaru = () => {
                         />
                       </Box>
                     </Box>
+                    <div className="flex justify-between gap-12">
+                      <div className="flex justify-items-start">
+                        <Image src={"./assets/icons/timer.svg"} alt="time" width={18} height={18} />
+                        <p className="pl-1">{recipe.time_estimation} menit</p>
+                      </div>
+                      <Image src={"./assets/icons/bookmarkGreen.svg"} alt="bookmark-active" width={18} height={18} />
+                    </div>
                   </CardContent>
                 </Card>
               </div>
