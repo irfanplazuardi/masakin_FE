@@ -13,16 +13,16 @@ const Navbar = () => {
       <div className="border-t border-gray-200 dark:border-gray-700"></div>
       <div className="flex justify-between px-4 items-center py-2">
         <button onClick={() => handleNavigation("/home")}>
-          <img src="./assets/icons/home.svg" alt="home" className="w-6 h-6" />
+          <img src="/assets/icons/home.svg" alt="home" className="w-6 h-6" />
         </button>
         <button onClick={() => handleNavigation("/bookmark")}>
-          <img src="./assets/icons/bookmark.svg" alt="bookmark" className="w-6 h-6" />
+          <img src="/assets/icons/bookmark.svg" alt="bookmark" className="w-6 h-6" />
         </button>
         <button onClick={() => handleNavigation("/recipe")}>
-          <img src="./assets/icons/recipe.svg" alt="recipe" className="w-6 h-6" />
+          <img src="/assets/icons/recipe.svg" alt="recipe" className="w-6 h-6" />
         </button>
         <button onClick={() => handleNavigation("/profile")}>
-          <img src="./assets/icons/profile.svg" alt="profile" className="w-6 h-6" />
+          <img src="/assets/icons/profile.svg" alt="profile" className="w-6 h-6" />
         </button>
       </div>
     </div>
