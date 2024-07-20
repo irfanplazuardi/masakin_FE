@@ -2,25 +2,27 @@ import Image from "next/image";
 
 interface CardRecipeDetailStepsProps {
   stepText: string;
-  imageUrl: string;
+  imageUrl1: string | null;
+  imageUrl2: string | null;
 }
 
 const CardRecipeDetailSteps: React.FC<CardRecipeDetailStepsProps> = ({
   stepText,
-  imageUrl,
+  imageUrl1,
+  imageUrl2,
 }) => {
   return (
     <div
-      className="flex flex-col items-start p-2"
+      className="flex flex-col items-start p-4"
       style={{
         width: "320px",
         borderRadius: "10px",
-        backgroundColor: "#FFFFFF", // Background color white
+        backgroundColor: "#FFFFFF",
         opacity: 1,
       }}
     >
       <div
-        className="flex flex-col items-start"
+        className="flex flex-col items-start mb-4"
         style={{
           backgroundColor: "#FFFFFF", // Background color white for text container
           padding: "8px",
@@ -30,30 +32,46 @@ const CardRecipeDetailSteps: React.FC<CardRecipeDetailStepsProps> = ({
         <span
           className="font-inter text-sm font-medium"
           style={{
-            width: "181px",
-            height: "20px",
-            lineHeight: "15.73px",
+            lineHeight: "1.5",
             letterSpacing: "0.1px",
             textAlign: "left",
             color: "#000000",
-            display: "block",
-            marginBottom: "8px", // Margin to separate from the image
           }}
         >
           {stepText}
         </span>
       </div>
-      <Image
-        src={imageUrl}
-        alt="Step Image"
-        width={111}
-        height={74}
+      <div
+        className="flex justify-between"
         style={{
-          borderRadius: "10px 0px 0px 0px",
-          marginTop: "8px",
-          backgroundColor: "#FFFFFF", // Background color white for the image
+          width: "100%",
         }}
-      />
+      >
+        {imageUrl1 && (
+          <Image
+            src={imageUrl1}
+            alt="Step Image 1"
+            width={150}
+            height={100}
+            style={{
+              borderRadius: "10px",
+              backgroundColor: "#FFFFFF", // Background color white for the image
+            }}
+          />
+        )}
+        {imageUrl2 && (
+          <Image
+            src={imageUrl2}
+            alt="Step Image 2"
+            width={150}
+            height={100}
+            style={{
+              borderRadius: "10px",
+              backgroundColor: "#FFFFFF",
+            }}
+          />
+        )}
+      </div>
     </div>
   );
 };
