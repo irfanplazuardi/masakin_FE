@@ -41,6 +41,6 @@ export interface Instruction {
     instruction_id: number;
     step_number:    number;
     description:    string;
-    image_url_1:    null;
-    image_url_2:    null;
+    image_url_1:    string | null;
+    image_url_2:    string | null;
 }

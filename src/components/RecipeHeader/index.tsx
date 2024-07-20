@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import { RecipeArrowleft } from '@/components';
+import Image from "next/image";
+import { RecipeArrowleft } from "@/components";
 
 interface RecipeHeaderProps {
   title: string;
@@ -23,7 +23,8 @@ const RecipeHeader: React.FC<RecipeHeaderProps> = ({ title, imageUrl }) => {
           fontSize: "23px",
           lineHeight: "27.84px",
           textAlign: "center",
-        }}>
+        }}
+      >
         {title}
       </h1>
       <div className="mt-4 w-full max-w-md flex items-center justify-center">

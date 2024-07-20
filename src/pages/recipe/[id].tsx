@@ -40,14 +40,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false, // See the "fallback" section below
+    fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params!;
   const recipe = await fetchRecipeById(id as string);
-  console.log(recipe);
+
   return {
     props: {
       recipe,
@@ -60,9 +60,9 @@ type RecipeProps = {
 };
 
 const Recipe = ({ recipe }: RecipeProps) => {
-  const [showIngredients, setShowIngredients] = useState(false);
-  const [showTools, setShowTools] = useState(false);
-  const [showSteps, setShowSteps] = useState(false);
+  const [showIngredients] = useState(false);
+  const [showTools] = useState(false);
+  const [showSteps] = useState(false);
 
   if (!recipe) {
     return <div>Loading...</div>;
@@ -82,7 +82,7 @@ const Recipe = ({ recipe }: RecipeProps) => {
       <RecipeButtonvideo videoUrl={recipe.video_url} />
 
       {/* Komponen Memasak (Detailrecipe) */}
-      <RecipeDetail />
+      <RecipeDetail recipe={recipe} />
 
       {/* Konten Bahan-bahan */}
       {showIngredients && (
