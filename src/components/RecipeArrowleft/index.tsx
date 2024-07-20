@@ -14,6 +14,12 @@ const RecipeArrowleft: React.FC = () => {
         width={20}
         height={20}
         onClick={() => router.push("/home")}
+        style={{
+          position: "fixed",
+          left: "7px",
+          top: "4px",
+          zIndex: 50,
+        }}
       />
     </div>
   );
