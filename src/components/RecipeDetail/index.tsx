@@ -1,85 +1,3 @@
-// import React, { useState } from "react";
-// import RecipeDetailFirstRow from "./RecipeDetailFirstRow";
-// import RecipeDetailSecondRowIngredients from "./RecipeDetailSecondRowIngredients";
-// import CardRecipeDetailIngredients from "./CardRecipeDetailIngredients";
-// import CardRecipeDetailTools from "./CardRecipeDetailTools";
-// import CardRecipeDetailSteps from "./CardRecipeDetailSteps";
-
-// const RecipeDetail: React.FC = () => {
-//   const [activeCard, setActiveCard] = useState<
-//     "ingredients" | "tools" | "steps" | null
-//   >(null);
-
-//   const handleIngredientsClick = () => {
-//     setActiveCard("ingredients");
-//   };
-
-//   const handleToolsClick = () => {
-//     setActiveCard("tools");
-//   };
-
-//   const handleStepsClick = () => {
-//     setActiveCard("steps");
-//   };
-
-//   return (
-//     <div
-//       className="bg-white py-2 flex flex-col items-center justify-between"
-//       style={{
-//         width: "324px",
-//         margin: "0 auto",
-//         gap: "10px",
-//         borderRadius: "10px 0px 0px 0px",
-//       }}
-//     >
-//       <RecipeDetailFirstRow
-//         onIngredientsClick={handleIngredientsClick}
-//         onToolsClick={handleToolsClick}
-//         onStepsClick={handleStepsClick}
-//       />
-//       <RecipeDetailSecondRowIngredients />
-//       {activeCard === "ingredients" && (
-//         <div className="space-y-2">
-//           <CardRecipeDetailIngredients
-//             leftText="Bahan Utama 1"
-//             rightText="100 gram"
-//           />
-//           <CardRecipeDetailIngredients
-//             leftText="Bahan Utama 2"
-//             rightText="200 gram"
-//           />
-//           <CardRecipeDetailIngredients
-//             leftText="Bahan Utama 3"
-//             rightText="200 gram"
-//           />
-//         </div>
-//       )}
-//       {activeCard === "tools" && (
-//         <div className="space-y-2">
-//           <CardRecipeDetailTools leftText="Alat 1" rightText="1 pcs" />
-//           <CardRecipeDetailTools leftText="Alat 2" rightText="2 pcs" />
-//           <CardRecipeDetailTools leftText="Alat 3" rightText="3 pcs" />
-//         </div>
-//       )}
-//       {activeCard === "steps" && (
-//         <div className="space-y-2">
-//           <CardRecipeDetailSteps
-//             stepText="1. Kumpulkan semua bahan."
-//             imageUrl="/assets/step_1_bulgogi.png"
-//           />
-//           <CardRecipeDetailSteps
-//             stepText="2. Cincang halus 8 siung bawang putih, Siapkan 60 ml Korean soy sauce, 30 ml minyak wijen panggang, 3 sdm brown sugar, tuang dan campur semua bahan ke dalam mangkuk untuk membuat marinasi.
-// "
-//             imageUrl="/assets/step_2_bulgogi.png"
-//           />
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default RecipeDetail;
-
 import React, { useState } from "react";
 import RecipeDetailFirstRow from "./RecipeDetailFirstRow";
 import RecipeDetailSecondRowIngredients from "./RecipeDetailSecondRowIngredients";
@@ -88,8 +6,16 @@ import RecipeDetailSecondRowSteps from "./RecipeDetailSecondRowSteps";
 import CardRecipeDetailIngredients from "./CardRecipeDetailIngredients";
 import CardRecipeDetailTools from "./CardRecipeDetailTools";
 import CardRecipeDetailSteps from "./CardRecipeDetailSteps";
+import Navbar from "../Navbar";
+import { RecipeTypes } from "@/Types/Recipetypes";
 
-const RecipeDetail: React.FC = () => {
+type RecipeProps = {
+  recipe: RecipeTypes | null;
+};
+
+const RecipeDetail: React.FC<RecipeProps> = ({ recipe }) => {
+  console.log("masuk deatil");
+  console.log(recipe);
   const [activeSection, setActiveSection] = useState<
     "ingredients" | "tools" | "steps" | null
   >(null);
@@ -127,39 +53,47 @@ const RecipeDetail: React.FC = () => {
 
       {activeSection === "ingredients" && (
         <div className="space-y-2">
-          <CardRecipeDetailIngredients
-            leftText="Bahan Utama 1"
-            rightText="100 gram"
-          />
-          <CardRecipeDetailIngredients
-            leftText="Bahan Utama 2"
-            rightText="200 gram"
-          />
-          <CardRecipeDetailIngredients
-            leftText="Bahan Utama 3"
-            rightText="300 gram"
-          />
+          {recipe !== null &&
+            recipe.ingredients.map((ingredient, index) => (
+              <CardRecipeDetailIngredients
+                key={index}
+                leftText={ingredient.name}
+                rightText={
+                  ingredient.quantity + " " + ingredient.measurement_unit
+                }
+              />
+            ))}
         </div>
       )}
       {activeSection === "tools" && (
         <div className="space-y-2">
-          <CardRecipeDetailTools leftText="Alat 1" rightText="1 pcs" />
-          <CardRecipeDetailTools leftText="Alat 2" rightText="2 pcs" />
-          <CardRecipeDetailTools leftText="Alat 3" rightText="3 pcs" />
+          {recipe !== null &&
+            recipe.equipments.map((equipment, index) => (
+              <CardRecipeDetailTools
+                key={index}
+                leftText={equipment.name}
+                rightText={""}
+              />
+            ))}
         </div>
       )}
       {activeSection === "steps" && (
         <div className="space-y-2">
-          <CardRecipeDetailSteps
-            stepText="1. Kumpulkan semua bahan."
-            imageUrl="/assets/step_1_bulgogi.png"
-          />
-          <CardRecipeDetailSteps
-            stepText="2. Cincang halus 8 siung bawang putih, Siapkan 60 ml Korean soy sauce, 30 ml minyak wijen panggang, 3 sdm brown sugar, tuang dan campur semua bahan ke dalam mangkuk untuk membuat marinasi."
-            imageUrl="/assets/step_2_bulgogi.png"
-          />
+          {recipe !== null &&
+            recipe.instructions.map((instruction, index) => (
+              <CardRecipeDetailSteps
+                key={index}
+                stepText={
+                  instruction.step_number + ". " + instruction.description
+                }
+                imageUrl1={instruction?.image_url_1 || null}
+                imageUrl2={instruction?.image_url_2 || null}
+              />
+            ))}
         </div>
       )}
+
+      <Navbar />
     </div>
   );
 };

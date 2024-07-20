@@ -30,19 +30,12 @@ const Recipe = () => {
     queryFn: fetchRecipe,
   });
 
-  // const recipeTitle = "Bulgogi";
-  // const recipeImageUrl = "/assets/Bulgogi.jpg";
   const rating = 5;
-  // const cookingTime = 50;
-  // const difficultyLevel = 3;
-  // const maxDifficultyLevel = 3;
-  // const recipeDescription =
-  //   "Bulgogi adalah daging sapi panggang klasik khas Korea yang lezat, cocok dinikmati saat makan siang ataupun makan malam.\n Dengan langkah-langkah yang sederhana, Bulgogi sangat mudah untuk dibuat.\n Hidangkan Bulgogi bersama nasi dan kimchi untuk sensasi makan yang benar-benar autentik.";
 
   // State untuk menampilkan konten bahan, alat, dan cara masak
-  const [showIngredients, setShowIngredients] = useState(false);
-  const [showTools, setShowTools] = useState(false);
-  const [showSteps, setShowSteps] = useState(false);
+  const [showIngredients] = useState(false);
+  const [showTools] = useState(false);
+  const [showSteps] = useState(false);
 
   return (
     <div>
@@ -58,12 +51,12 @@ const Recipe = () => {
       <RecipeDescription description={data?.description || "No Description"} />
       <RecipeButtonvideo
         videoUrl={
-          data?.video_url || "https://www.youtube.com/watch?v=cmxaIPr_1kI"
+          data?.video_url || "https://www.youtube.com/watch?v=guwu8I2VDTI"
         }
       />
 
       {/* Komponen Memasak (Detailrecipe) */}
-      <RecipeDetail />
+      <RecipeDetail recipe={null} />
 
       {/* Konten Bahan-bahan */}
       {showIngredients && (
